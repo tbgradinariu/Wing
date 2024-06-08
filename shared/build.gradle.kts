@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.devToolsKsp)
+    alias(libs.plugins.kmpNativeCoroutines)
 }
 
 kotlin {
@@ -30,9 +32,11 @@ kotlin {
     sourceSets {
         all {
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
         commonMain.dependencies {
             api("com.rickclephas.kmp:kmp-observableviewmodel-core:1.0.0-BETA-3")
+            implementation(libs.datetime)
         }
     }
 }
