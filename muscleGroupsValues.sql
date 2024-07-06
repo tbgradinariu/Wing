@@ -1,0 +1,15 @@
+insert into muscle_groups (name) values ('Chest');
+insert into muscle_groups (name) values ('Lats');
+insert into muscle_groups (name) values ('Traps');
+insert into muscle_groups (name) values ('Front deltoid');
+insert into muscle_groups (name) values ('Side deltoid');
+insert into muscle_groups (name) values ('Rear deltoid');
+insert into muscle_groups (name) values ('Quads');
+insert into muscle_groups (name) values ('Hamstrings');
+insert into muscle_groups (name) values ('Calves');
+insert into muscle_groups (name) values ('Abs');
+insert into muscle_groups (name) values ('Biceps');
+insert into muscle_groups (name) values ('Triceps');
+insert into muscle_groups (name) values ('Chest');
+insert into muscle_groups (name) values ('Glutes');
+insert into muscle_groups (name) values ('Lower back');
