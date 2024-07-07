@@ -6,15 +6,10 @@ struct HomeView: View {
     var body: some View {
         VStack {
             ProfileCardView()
-            Divider()
-                .background(Color.white)
             NextWorkoutCardView()
-            .frame(maxWidth: .infinity)
-            .cornerRadius(10)
-            .padding(.horizontal, 4)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.gray.edgesIgnoringSafeArea(.all))
+        .background(Color.dark.edgesIgnoringSafeArea(.all))
     }
 }
 

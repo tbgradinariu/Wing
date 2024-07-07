@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
+		F95D85062C1D37BB00042F11 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D85052C1D37BB00042F11 /* Fonts.swift */; };
 		F9C264522C0C26A6002FCA11 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C264512C0C26A6002FCA11 /* MainView.swift */; };
 		F9C264542C0C2E2F002FCA11 /* TabItemEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C264532C0C2E2F002FCA11 /* TabItemEnum.swift */; };
 		F9E20FCC2C0C36C80043C2C9 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E20FCB2C0C36C80043C2C9 /* ProfileCardView.swift */; };
@@ -24,6 +25,18 @@
 		F9E20FE22C0C86F40043C2C9 /* NextWorkoutCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E20FE12C0C86F40043C2C9 /* NextWorkoutCardView.swift */; };
 		F9F80A8F2C12B317008A3642 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F80A8E2C12B317008A3642 /* Set.swift */; };
 		F9F80A912C12B43D008A3642 /* Float+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F80A902C12B43D008A3642 /* Float+Format.swift */; };
+		F9F80A962C14141B008A3642 /* ExerciseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F80A952C14141B008A3642 /* ExerciseCardView.swift */; };
+		F9F80AA12C141801008A3642 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A982C141800008A3642 /* SF-Pro-Display-Light.otf */; };
+		F9F80AA22C141801008A3642 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A992C141800008A3642 /* SF-Pro-Display-Ultralight.otf */; };
+		F9F80AA32C141801008A3642 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9A2C141800008A3642 /* SF-Pro-Display-Heavy.otf */; };
+		F9F80AA42C141801008A3642 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9B2C141800008A3642 /* SF-Pro-Display-Black.otf */; };
+		F9F80AA52C141801008A3642 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9C2C141801008A3642 /* SF-Pro-Display-Bold.otf */; };
+		F9F80AA62C141801008A3642 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9D2C141801008A3642 /* SF-Pro-Display-Semibold.otf */; };
+		F9F80AA72C141801008A3642 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9E2C141801008A3642 /* SF-Pro-Display-Medium.otf */; };
+		F9F80AA82C141801008A3642 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80A9F2C141801008A3642 /* SF-Pro-Display-Regular.otf */; };
+		F9F80AA92C141801008A3642 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F80AA02C141801008A3642 /* SF-Pro-Display-Thin.otf */; };
+		F9F80AAB2C159EFE008A3642 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F80AAA2C159EFE008A3642 /* Colors.swift */; };
+		F9F80AAD2C159FBB008A3642 /* Exercise+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F80AAC2C159FBB008A3642 /* Exercise+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +47,7 @@
 		7555FF82242A565900829871 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		F95D85052C1D37BB00042F11 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		F9C264512C0C26A6002FCA11 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F9C264532C0C2E2F002FCA11 /* TabItemEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemEnum.swift; sourceTree = "<group>"; };
 		F9E20FCB2C0C36C80043C2C9 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
@@ -41,6 +55,18 @@
 		F9E20FE12C0C86F40043C2C9 /* NextWorkoutCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextWorkoutCardView.swift; sourceTree = "<group>"; };
 		F9F80A8E2C12B317008A3642 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		F9F80A902C12B43D008A3642 /* Float+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Format.swift"; sourceTree = "<group>"; };
+		F9F80A952C14141B008A3642 /* ExerciseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCardView.swift; sourceTree = "<group>"; };
+		F9F80A982C141800008A3642 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		F9F80A992C141800008A3642 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		F9F80A9A2C141800008A3642 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		F9F80A9B2C141800008A3642 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		F9F80A9C2C141801008A3642 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		F9F80A9D2C141801008A3642 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		F9F80A9E2C141801008A3642 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		F9F80A9F2C141801008A3642 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		F9F80AA02C141801008A3642 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		F9F80AAA2C159EFE008A3642 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F9F80AAC2C159FBB008A3642 /* Exercise+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercise+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,13 +122,14 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				F9E20FCA2C0C36AA0043C2C9 /* Home */,
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
+				F9F80AAF2C15EF9A008A3642 /* Resources */,
+				F9E20FCA2C0C36AA0043C2C9 /* Home */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				058557D7273AAEEB004C7B11 /* Preview Content */,
 				F9C264512C0C26A6002FCA11 /* MainView.swift */,
 				F9C264532C0C2E2F002FCA11 /* TabItemEnum.swift */,
+				F9F80AAE2C15EF78008A3642 /* Extensions */,
+				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -122,10 +149,46 @@
 				F9E20FCB2C0C36C80043C2C9 /* ProfileCardView.swift */,
 				F9E20FD12C0C802A0043C2C9 /* KMPObservableViewModelCore.swift */,
 				F9E20FE12C0C86F40043C2C9 /* NextWorkoutCardView.swift */,
-				F9F80A8E2C12B317008A3642 /* Set.swift */,
-				F9F80A902C12B43D008A3642 /* Float+Format.swift */,
+				F9F80A952C14141B008A3642 /* ExerciseCardView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		F9F80A972C1417D3008A3642 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F9F80A9B2C141800008A3642 /* SF-Pro-Display-Black.otf */,
+				F9F80A9C2C141801008A3642 /* SF-Pro-Display-Bold.otf */,
+				F9F80A9A2C141800008A3642 /* SF-Pro-Display-Heavy.otf */,
+				F9F80A982C141800008A3642 /* SF-Pro-Display-Light.otf */,
+				F9F80A9E2C141801008A3642 /* SF-Pro-Display-Medium.otf */,
+				F9F80A9F2C141801008A3642 /* SF-Pro-Display-Regular.otf */,
+				F9F80A9D2C141801008A3642 /* SF-Pro-Display-Semibold.otf */,
+				F9F80AA02C141801008A3642 /* SF-Pro-Display-Thin.otf */,
+				F9F80A992C141800008A3642 /* SF-Pro-Display-Ultralight.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F9F80AAE2C15EF78008A3642 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F9F80A902C12B43D008A3642 /* Float+Format.swift */,
+				F9F80AAC2C159FBB008A3642 /* Exercise+Color.swift */,
+				F9F80A8E2C12B317008A3642 /* Set.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F9F80AAF2C15EF9A008A3642 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9F80AAA2C159EFE008A3642 /* Colors.swift */,
+				F95D85052C1D37BB00042F11 /* Fonts.swift */,
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+				F9F80A972C1417D3008A3642 /* Fonts */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +263,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F80AA62C141801008A3642 /* SF-Pro-Display-Semibold.otf in Resources */,
+				F9F80AA92C141801008A3642 /* SF-Pro-Display-Thin.otf in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				F9F80AA32C141801008A3642 /* SF-Pro-Display-Heavy.otf in Resources */,
+				F9F80AA12C141801008A3642 /* SF-Pro-Display-Light.otf in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				F9F80AA52C141801008A3642 /* SF-Pro-Display-Bold.otf in Resources */,
+				F9F80AA72C141801008A3642 /* SF-Pro-Display-Medium.otf in Resources */,
+				F9F80AA22C141801008A3642 /* SF-Pro-Display-Ultralight.otf in Resources */,
+				F9F80AA82C141801008A3642 /* SF-Pro-Display-Regular.otf in Resources */,
+				F9F80AA42C141801008A3642 /* SF-Pro-Display-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,12 +306,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F80A8F2C12B317008A3642 /* Set.swift in Sources */,
+				F9F80AAB2C159EFE008A3642 /* Colors.swift in Sources */,
+				F95D85062C1D37BB00042F11 /* Fonts.swift in Sources */,
 				F9E20FCC2C0C36C80043C2C9 /* ProfileCardView.swift in Sources */,
 				F9E20FD22C0C802A0043C2C9 /* KMPObservableViewModelCore.swift in Sources */,
+				F9F80A962C14141B008A3642 /* ExerciseCardView.swift in Sources */,
 				F9E20FE22C0C86F40043C2C9 /* NextWorkoutCardView.swift in Sources */,
 				F9F80A912C12B43D008A3642 /* Float+Format.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				F9C264522C0C26A6002FCA11 /* MainView.swift in Sources */,
+				F9F80AAD2C159FBB008A3642 /* Exercise+Color.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				F9C264542C0C2E2F002FCA11 /* TabItemEnum.swift in Sources */,
 			);
@@ -301,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -382,7 +458,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,7 +490,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

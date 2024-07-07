@@ -6,6 +6,9 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.format
+import kotlinx.datetime.format.MonthNames
+import kotlinx.datetime.format.char
 import kotlinx.datetime.toLocalDateTime
 
 class NextWorkoutViewModel: ViewModel() {
@@ -31,10 +34,14 @@ class NextWorkoutViewModel: ViewModel() {
         val squats = Exercise("Squats", weightedSets)
         val pullups = Exercise("Pull-ups", bodyweightSets)
         val calfRaises = Exercise("Calf raises", weightedSets)
+        val barbellRows = Exercise("Barbell rows", weightedSets)
         val now: Instant = Clock.System.now()
         val today: LocalDate = now.toLocalDateTime(TimeZone.currentSystemDefault()).date
-        val name = "${today.dayOfWeek.name} - ${today.month.name} ${today.dayOfMonth}"
-        val workout = Workout(name, today, listOf(squats, pullups, calfRaises))
+        val customFormat = LocalDate.Format {
+            monthName(MonthNames.ENGLISH_ABBREVIATED); char(' '); dayOfMonth(); chars(", "); year()
+        }
+        val name = today.format(customFormat)
+        val workout = Workout(name, today, listOf(squats, pullups, calfRaises, barbellRows))
         workoutFlow.value = workout
     }
 }

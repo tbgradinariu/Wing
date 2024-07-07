@@ -1,22 +1,22 @@
 package com.tiberiu.wing
 
-import Greeting
+import PostgresTaskRepository
 import SERVER_PORT
+import com.tiberiu.wing.plugins.configureRouting
+import configureDatabases
+import configureSerialization
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 
-fun main() {
-    embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
-        .start(wait = true)
+fun main(args: Array<String>) {
+    EngineMain.main(args)
 }
 
 fun Application.module() {
-    routing {
-        get("/") {
-            call.respondText("Ktor: ${Greeting().greet()}")
-        }
-    }
+    val repository = PostgresTaskRepository()
+
+    print("tibi ${environment.config.propertyOrNull("ktor.deployment.port")}")
+    configureRouting()
+    configureSerialization(repository)
+    configureDatabases(environment.config)
 }

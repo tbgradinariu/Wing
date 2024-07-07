@@ -12,34 +12,27 @@ import KMPObservableViewModelSwiftUI
 
 struct NextWorkoutCardView: View {
     @StateViewModel var viewModel = NextWorkoutViewModel()
+    private let adaptiveColumn = [
+        GridItem(.adaptive(minimum: 120))
+    ]
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Next planned workout")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
+                    .sanFranciscoProFont(.medium)
+                    .foregroundColor(.light)
                 Spacer()
             }
-            .padding(.top, 4)
             if let workout = viewModel.workout {
                 VStack(alignment: .leading) {
                     Text(workout.name)
-                        .font(.system(size: 16))
-                        .foregroundColor(.white)
-                        .padding(.bottom)
-                    ForEach(workout.exercises, id: \.self) { exercise in
-                        VStack(alignment: .leading) {
-                            Text("\(exercise.name)")
-                                .font(.system(size: 14))
-                                .foregroundColor(.white)
-                            ForEach(exercise.sets, id: \.id) { set in
-                                Text("\(set.weight.decimals(0)) kg x \(set.reps) reps")
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.white)
-                            }
+                        .sanFranciscoProFont(.medium, 14)
+                        .foregroundColor(.light)
+                    LazyVGrid(columns: adaptiveColumn, spacing: 8) {
+                        ForEach(workout.exercises, id: \.self) { exercise in
+                            ExerciseCardView(exercise: exercise)
                         }
-                        .padding(.bottom, 4)
                     }
                 }
             } else {
@@ -49,12 +42,11 @@ struct NextWorkoutCardView: View {
                 Text("Start workout")
                     .foregroundColor(.white)
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 45)
-                    .background(Color.blue)
+                    .background(Color.mediumBlue)
                     .cornerRadius(10)
             }
-                .padding()
         }
-        .padding(.leading)
+        .padding(.horizontal, 6)
         .onAppear {
             viewModel.getNextWorkout()
         }

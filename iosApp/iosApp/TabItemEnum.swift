@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TabItemEnum: Int {
+enum TabItemEnum: Int, CaseIterable {
     case home = 0
     case plan
     case progress

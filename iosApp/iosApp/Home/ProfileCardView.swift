@@ -25,13 +25,15 @@ struct ProfileCardView: View {
             VStack(alignment: .leading) {
                 Text("Favorite exercise: Squat")
                     .font(.system(size: 14))
-                    .foregroundColor(.white)
+                    .foregroundColor(.light)
                 Text("One rep max: 40kg")
                     .font(.system(size: 14))
-                    .foregroundColor(.white)
+                    .foregroundColor(.light)
             }
             Spacer()
         }
         .padding(.horizontal)
+        .padding(.bottom)
+        .background(Color.darkBlue)
     }
 }
