@@ -7,6 +7,6 @@ ktor:
 
 storage:
     driverClassName: "org.postgresql.Driver"
-    jdbcURL: "jdbc:postgresql://localhost:5432/postgres"
-    user: "postgres"
+    jdbcURL: "jdbc:postgresql://localhost:5432/fitness"
+    user: "tiberiugradinariu"
     password: "password"

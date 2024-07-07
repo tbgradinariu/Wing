@@ -1,34 +1,20 @@
 package com.tiberiu.wing.db
 
-import com.tiberiu.wing.model.Priority
-import com.tiberiu.wing.model.Task
 import kotlinx.coroutines.Dispatchers
-import org.jetbrains.exposed.dao.IntEntity
-import org.jetbrains.exposed.dao.IntEntityClass
-import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.Transaction
+import org.jetbrains.exposed.sql.javatime.date
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
-object TaskTable: IntIdTable("task") {
-    val name = varchar("name", 50)
-    val description = varchar("description", 50)
-    val priority = varchar("priority", 50)
+object Users: Table() {
+    val id = integer("id").autoIncrement()
+    val name = varchar("name", length = 50)
+    val email = varchar("email", length = 50)
+    val date = date("date_of_birth")
+
+    override val primaryKey: PrimaryKey?
+        get() = PrimaryKey(id)
 }
 
-class TaskDAO(id: EntityID<Int>) : IntEntity(id) {
-    companion object : IntEntityClass<TaskDAO>(TaskTable)
-
-    var name by TaskTable.name
-    var description by TaskTable.description
-    var priority by TaskTable.priority
-}
-
-suspend fun <T> suspendTransaction(block: Transaction.() -> T): T =
+suspend fun <T> dbQuery(block: Transaction.() -> T): T =
     newSuspendedTransaction(Dispatchers.IO, statement = block)
-
-fun daoToModel(dao: TaskDAO) = Task(
-    dao.name,
-    dao.description,
-    Priority.valueOf(dao.priority)
-)

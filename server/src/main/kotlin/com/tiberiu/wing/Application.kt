@@ -1,7 +1,7 @@
 package com.tiberiu.wing
 
-import PostgresTaskRepository
 import SERVER_PORT
+import com.tiberiu.wing.model.UserDatabaseRepository
 import com.tiberiu.wing.plugins.configureRouting
 import configureDatabases
 import configureSerialization
@@ -13,10 +13,8 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    val repository = PostgresTaskRepository()
-
     print("tibi ${environment.config.propertyOrNull("ktor.deployment.port")}")
     configureRouting()
-    configureSerialization(repository)
     configureDatabases(environment.config)
+    configureSerialization(UserDatabaseRepository())
 }
