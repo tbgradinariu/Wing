@@ -1,4 +1,4 @@
-package com.tiberiu.wing.model
+package com.tiberiu.wing.model.user
 
 import com.tiberiu.wing.db.Users
 import com.tiberiu.wing.db.dbQuery

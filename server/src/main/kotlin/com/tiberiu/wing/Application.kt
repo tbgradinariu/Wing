@@ -1,7 +1,7 @@
 package com.tiberiu.wing
 
-import SERVER_PORT
-import com.tiberiu.wing.model.UserDatabaseRepository
+import com.tiberiu.wing.model.user.UserDatabaseRepository
+import com.tiberiu.wing.model.workoutplans.WorkoutPlansDatabaseRepository
 import com.tiberiu.wing.plugins.configureRouting
 import configureDatabases
 import configureSerialization
@@ -16,5 +16,5 @@ fun Application.module() {
     print("tibi ${environment.config.propertyOrNull("ktor.deployment.port")}")
     configureRouting()
     configureDatabases(environment.config)
-    configureSerialization(UserDatabaseRepository())
+    configureSerialization(UserDatabaseRepository(), WorkoutPlansDatabaseRepository())
 }

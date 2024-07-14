@@ -1,4 +1,4 @@
-package com.tiberiu.wing.model
+package com.tiberiu.wing.model.user
 
 interface UserRepository {
     suspend fun getAllUsers(): List<User>

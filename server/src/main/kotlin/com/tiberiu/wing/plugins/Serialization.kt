@@ -1,4 +1,5 @@
-import com.tiberiu.wing.model.UserRepository
+import com.tiberiu.wing.model.user.UserRepository
+import com.tiberiu.wing.model.workoutplans.WorkoutPlanRepository
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -6,7 +7,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Application.configureSerialization(repository: UserRepository) {
+fun Application.configureSerialization(repository: UserRepository, workoutPlansRepository: WorkoutPlanRepository) {
     install(ContentNegotiation) {
         json()
     }
@@ -31,31 +32,22 @@ fun Application.configureSerialization(repository: UserRepository) {
                 }
                 call.respond(user)
             }
+        }
 
-//            post {
-//                try {
-//                    val task = call.receive<Task>()
-//                    repository.addTask(task)
-//                    call.respond(HttpStatusCode.NoContent)
-//                } catch (ex: IllegalStateException) {
-//                    call.respond(HttpStatusCode.BadRequest)
-//                } catch (ex: JsonConvertException) {
-//                    call.respond(HttpStatusCode.BadRequest)
-//                }
-//            }
-//
-//            delete("/{taskName}") {
-//                val name = call.parameters["taskName"]
-//                if (name == null) {
-//                    call.respond(HttpStatusCode.BadRequest)
-//                    return@delete
-//                }
-//                if (repository.removeTask(name)) {
-//                    call.respond(HttpStatusCode.NoContent)
-//                } else {
-//                    call.respond(HttpStatusCode.NotFound)
-//                }
-//            }
+        route("workoutPlans") {
+            get("/{userId}") {
+                try {
+                    val userId = call.parameters["userId"]?.toInt()
+                    if (userId == null) {
+                        call.respond(HttpStatusCode.BadRequest)
+                        return@get
+                    }
+                    val plans = workoutPlansRepository.getWorkoutPlansForUser(userId)
+                    call.respond(plans)
+                } catch (ex: NumberFormatException) {
+                    call.respond(HttpStatusCode.BadRequest)
+                }
+            }
         }
     }
 }

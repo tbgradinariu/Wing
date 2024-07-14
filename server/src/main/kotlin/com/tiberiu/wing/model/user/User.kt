@@ -1,4 +1,4 @@
-package com.tiberiu.wing.model
+package com.tiberiu.wing.model.user
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
