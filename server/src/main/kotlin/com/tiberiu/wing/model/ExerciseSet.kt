@@ -1,4 +1,4 @@
-package com.tiberiu.wing.model.exercises
+package com.tiberiu.wing.model
 
 import kotlinx.serialization.Serializable
 

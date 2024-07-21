@@ -1,4 +1,4 @@
-package com.tiberiu.wing.model.workoutplans
+package com.tiberiu.wing.model
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable

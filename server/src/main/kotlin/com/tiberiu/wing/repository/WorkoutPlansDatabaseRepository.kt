@@ -1,8 +1,9 @@
-package com.tiberiu.wing.model.workoutplans
+package com.tiberiu.wing.repository
 
 import com.tiberiu.wing.db.WorkoutPlans
 import com.tiberiu.wing.db.Workouts
 import com.tiberiu.wing.db.dbQuery
+import com.tiberiu.wing.model.WorkoutPlan
 import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.alias

@@ -9,9 +9,10 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 
 object Users: Table() {
     val id = integer("id").autoIncrement("users_id_seq")
-    val name = varchar("name", length = 50)
-    val email = varchar("email", length = 50)
-    val date = date("date_of_birth")
+    val name = varchar("name", 50)
+    val email = varchar("email", 50)
+    val passwordHash = varchar("password_hash", 100)
+    val dateOfBirth = date("date_of_birth")
 
     override val primaryKey: PrimaryKey?
         get() = PrimaryKey(id)

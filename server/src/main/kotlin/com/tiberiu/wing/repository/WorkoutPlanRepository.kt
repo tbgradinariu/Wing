@@ -1,4 +1,6 @@
-package com.tiberiu.wing.model.workoutplans
+package com.tiberiu.wing.repository
+
+import com.tiberiu.wing.model.WorkoutPlan
 
 interface WorkoutPlanRepository {
     suspend fun getWorkoutPlansForUser(userId: Int): List<WorkoutPlan>

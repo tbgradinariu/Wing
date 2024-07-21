@@ -21,6 +21,8 @@ dependencies {
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.statuspages)
     implementation(libs.ktor.server.contentnegotiation)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.auth.jwt)
     implementation(libs.ktor.kotlinx.serialization)
     testImplementation(libs.ktor.server.tests)
     testImplementation(libs.kotlin.test.junit)
