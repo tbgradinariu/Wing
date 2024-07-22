@@ -1,8 +1,9 @@
 package com.tiberiu.wing
 
 import com.tiberiu.wing.repository.UserDatabaseRepository
-import com.tiberiu.wing.repository.WorkoutPlansDatabaseRepository
 import com.tiberiu.wing.plugins.configureRouting
+import com.tiberiu.wing.plugins.configureSecurity
+import com.tiberiu.wing.service.JwtService
 import com.tiberiu.wing.service.UserService
 import configureDatabases
 import configureSerialization
@@ -15,6 +16,12 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     configureDatabases(environment.config)
-    configureRouting(UserService(UserDatabaseRepository()))
+
+    val userRepository = UserDatabaseRepository()
+    val userService = UserService(userRepository)
+    val jwtService = JwtService(this, userService)
+
+    configureSecurity(jwtService)
+    configureRouting(userService, jwtService)
     configureSerialization()
 }

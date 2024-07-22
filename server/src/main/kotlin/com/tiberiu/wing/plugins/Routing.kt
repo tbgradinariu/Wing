@@ -1,18 +1,22 @@
 package com.tiberiu.wing.plugins
 
+import com.tiberiu.wing.routing.authRoute
 import com.tiberiu.wing.routing.userRoute
+import com.tiberiu.wing.service.JwtService
 import com.tiberiu.wing.service.UserService
-import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.*
-import io.ktor.server.response.respond
-import io.ktor.server.routing.get
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 
 fun Application.configureRouting(
-    userService: UserService
+    userService: UserService,
+    jwtService: JwtService
 ) {
     routing {
+        route("/api/auth") {
+            authRoute(jwtService)
+        }
+
         route("/api/user") {
             userRoute(userService)
         }

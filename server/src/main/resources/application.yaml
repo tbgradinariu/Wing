@@ -10,3 +10,9 @@ storage:
     jdbcURL: "jdbc:postgresql://localhost:5432/fitness"
     user: "tiberiugradinariu"
     password: "password"
+
+jwt:
+  audience: "my-audience"
+  issuer: "http://localhost"
+  realm: "my realm"
+  secret: "$SECRET"

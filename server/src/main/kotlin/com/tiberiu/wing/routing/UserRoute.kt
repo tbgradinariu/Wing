@@ -7,6 +7,9 @@ import com.tiberiu.wing.routing.response.UserResponse
 import com.tiberiu.wing.service.UserService
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.*
+import io.ktor.server.auth.authenticate
+import io.ktor.server.auth.jwt.JWTPrincipal
+import io.ktor.server.auth.principal
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -25,19 +28,28 @@ fun Route.userRoute(
         call.respond(HttpStatusCode.Created)
     }
 
-    get {
-        val users = userService.getAllUsers()
-        call.respond(users.map(User::toResponse))
-    }
+    authenticate {
+        get {
+            val users = userService.getAllUsers()
+            call.respond(users.map(User::toResponse))
+        }
 
-    get("/{id}") {
-        val id: Int = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest)
+        get("/{id}") {
+            val id: Int = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest)
 
-        val foundUser = userService.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound)
+            val foundUser = userService.findById(id) ?: return@get call.respond(HttpStatusCode.NotFound)
 
-        call.respond(foundUser.toResponse())
+            if (foundUser.email != extractPrincipalEmail(call)) {
+                return@get call.respond(HttpStatusCode.NotFound)
+            }
+
+            call.respond(foundUser.toResponse())
+        }
     }
 }
+
+fun extractPrincipalEmail(call: ApplicationCall): String? =
+    call.principal<JWTPrincipal>()?.payload?.getClaim("email")?.asString()
 
 private fun User.toResponse(): UserResponse =
     UserResponse(id = this.id, email = this.email)
