@@ -295,3 +295,14 @@ left join exercise_sets on exercises.id = exercise_sets.exercise_id;
  Roxana |                          3 | 2024-07-08 | Cardio workout           | 2024-07-10 09:00:00 |                         |      |                 
 (279 rows)
 
+select
+    workout_plans.name,
+    workout_plans.target_weekly_workout_days,
+    workout_templates.main_exercise_id,
+    workout_templates.secondary_exercise_id,
+    workout_templates.auxiliary_exercise_id,
+    workout_templates.auxiliary_exercise_id_2,
+    workout_templates.auxiliary_exercise_id_3 from workout_plans
+    left join workout_templates on workout_templates.workout_plan_id = workout_plans.id
+    where workout_plans.user_id = 1;
+

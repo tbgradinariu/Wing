@@ -1,9 +1,13 @@
 package com.tiberiu.wing.repository
 
+import com.tiberiu.wing.db.ExerciseSets
+import com.tiberiu.wing.db.ExerciseTemplates
+import com.tiberiu.wing.db.Exercises
 import com.tiberiu.wing.db.WorkoutPlans
 import com.tiberiu.wing.db.Workouts
 import com.tiberiu.wing.db.dbQuery
 import com.tiberiu.wing.model.WorkoutPlan
+import com.tiberiu.wing.model.WorkoutPlanDetails
 import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.alias
@@ -37,7 +41,7 @@ class WorkoutPlansDatabaseRepository: WorkoutPlanRepository {
                         startDate = LocalDate(it[WorkoutPlans.startDate].year, it[WorkoutPlans.startDate].month, it[WorkoutPlans.startDate].dayOfMonth),
                         endDate = endDate,
                         totalDoneWorkouts = it[totalWorkouts].toInt()
-                        )
+                    )
                 }
         }
     }

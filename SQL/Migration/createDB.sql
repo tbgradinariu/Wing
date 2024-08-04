@@ -11,9 +11,27 @@ create table users(
 create table workout_plans(
 	id serial not null primary key,
 	user_id smallint not null references users(id),
-	target_weekly_workout_days smallint,
 	start_date date,
-	end_date date);
+	end_date date,
+	name varchar(40) not null,
+	first_workout_id int references workout_templates(id),
+	second_workout_id int references workout_templates(id),
+	third_workout_id int references workout_templates(id),
+	fourth_workout_id int references workout_templates(id),
+	fifth_workout_id int references workout_templates(id),
+	sixth_workout_id int references workout_templates(id),
+	seventh_workout_id int references workout_templates(id));
+
+create table workout_templates(
+    id serial not null primary key,
+    workout_plan_id int references workout_plans(id),
+    user_id smallint not null references users(id),
+    main_exercise_id smallint not null references exercise_templates(id),
+    secondary_exercise_id smallint not null references exercise_templates(id),
+    auxiliary_exercise_id smallint references exercise_templates(id),
+    auxiliary_exercise_id_2 smallint references exercise_templates(id),
+    auxiliary_exercise_id_3 smallint references exercise_templates(id)
+);
 
 create table workouts(
 	id serial not null primary key, 
@@ -138,6 +156,18 @@ insert into exercise_templates (exercise_type_id, muscle_group_id, name) values 
 insert into exercise_templates (exercise_type_id, muscle_group_id, name) values (7, 8, 'Sit ups');
 insert into exercise_templates (exercise_type_id, muscle_group_id, name) values (7, 8, 'Crunches');
 insert into exercise_templates (exercise_type_id, muscle_group_id, name) values (3, 13, 'Rear delt fly');
+insert into exercise_templates (exercise_type_id, muscle_group_id, secondary_muscle_group_id, name) values (3, 1, 11, 'Dumbbell chest flys');
+insert into exercise_templates (exercise_type_id, muscle_group_id, secondary_muscle_group_id, third_muscle_group_id, fourth_muscle_group_id, name) values (5, 4, 5, 6, 7, 'Lunges');
+
+insert into workout_templates(user_id, workout_plan_id, main_exercise_id, secondary_exercise_id, auxiliary_exercise_id, auxiliary_exercise_id_2, auxiliary_exercise_id_3)
+values (1, 1, 1, 4, 11, 12, 18);
+insert into workout_templates(user_id, workout_plan_id, main_exercise_id, secondary_exercise_id, auxiliary_exercise_id, auxiliary_exercise_id_2, auxiliary_exercise_id_3)
+values (1, 1, 1, 6, 22, 13, 16);
+insert into workout_templates(user_id, workout_plan_id, main_exercise_id, secondary_exercise_id, auxiliary_exercise_id, auxiliary_exercise_id_2, auxiliary_exercise_id_3)
+values (1, 1, 1, 3, 23, 21, 17);
+insert into workout_templates(user_id, workout_plan_id, main_exercise_id, secondary_exercise_id, auxiliary_exercise_id, auxiliary_exercise_id_2, auxiliary_exercise_id_3)
+values (1, 1, 1, 8, 12, 15, 14);
+
 
 -- Bench press, Barbell row 19.05
 insert into exercises(exercise_template_id, workout_id) values (6, 1);

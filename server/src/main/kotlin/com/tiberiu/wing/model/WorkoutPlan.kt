@@ -12,3 +12,10 @@ data class WorkoutPlan(
     val endDate: LocalDate?,
     val totalDoneWorkouts: Int
 )
+
+data class WorkoutPlanDetails(
+    val name: String,
+    val startDate: LocalDate,
+    val endDate: LocalDate?,
+    val workouts: List<Workout>
+)

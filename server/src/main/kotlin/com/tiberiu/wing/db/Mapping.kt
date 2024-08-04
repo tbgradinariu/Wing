@@ -13,6 +13,7 @@ object Users: Table() {
     val email = varchar("email", 50)
     val passwordHash = varchar("password_hash", 100)
     val dateOfBirth = date("date_of_birth")
+    val dateJoined = date("date_joined")
 
     override val primaryKey: PrimaryKey?
         get() = PrimaryKey(id)
@@ -83,11 +84,29 @@ object WorkoutPlans: Table("workout_plans") {
     val id = integer("id").autoIncrement("workout_plans_id_seq")
     val userId = integer("user_id").references(Users.id)
     val name = varchar("name", 40)
-    val targetWeeklyWorkoutDays = integer("target_weekly_workout_days")
     val startDate = date("start_date")
     val endDate = date("end_date")
+    val firstWorkoutId = integer("first_workout_id").references(WorkoutTemplates.id)
+    val secondWorkoutId = integer("second_workout_id").references(WorkoutTemplates.id)
+    val thirdWorkoutId = integer("third_workout_id").references(WorkoutTemplates.id)
+    val fourthWorkoutId = integer("fourth_workout_id").references(WorkoutTemplates.id)
+    val fifthWorkoutId = integer("fifth_workout_id").references(WorkoutTemplates.id)
+    val sixthWorkoutId = integer("sixth_workout_id").references(WorkoutTemplates.id)
+    val seventhWorkoutId = integer("seventh_workout_id").references(WorkoutTemplates.id)
 
     override val primaryKey: PrimaryKey
+        get() = PrimaryKey(id)
+}
+
+object WorkoutTemplates : Table("workout_templates") {
+    val id = integer("id").autoIncrement("workout_templates_id_seq")
+    val mainExerciseId = integer("main_exercise_id").references(ExerciseTemplates.id)
+    val secondaryExerciseId = integer("secondary_exercise_id").references(ExerciseTemplates.id)
+    val auxiliaryExerciseId = integer("auxiliary_exercise_id").references(ExerciseTemplates.id)
+    val secondAuxiliaryExerciseId = integer("auxiliary_exercise_id_2").references(ExerciseTemplates.id)
+    val thirdAuxiliaryExerciseId = integer("auxiliary_exercise_id_3").references(ExerciseTemplates.id)
+
+    override val primaryKey: PrimaryKey?
         get() = PrimaryKey(id)
 }
 

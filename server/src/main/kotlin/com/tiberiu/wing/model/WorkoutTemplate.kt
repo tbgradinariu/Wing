@@ -3,7 +3,7 @@ package com.tiberiu.wing.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MuscleGroup(
+data class WorkoutTemplate(
     val id: Int,
-    val name: String
+    val exerciseTemplates: List<ExerciseTemplate>
 )
