@@ -84,15 +84,18 @@ object WorkoutPlans: Table("workout_plans") {
     val id = integer("id").autoIncrement("workout_plans_id_seq")
     val userId = integer("user_id").references(Users.id)
     val name = varchar("name", 40)
-    val startDate = date("start_date")
-    val endDate = date("end_date")
-    val firstWorkoutId = integer("first_workout_id").references(WorkoutTemplates.id)
-    val secondWorkoutId = integer("second_workout_id").references(WorkoutTemplates.id)
-    val thirdWorkoutId = integer("third_workout_id").references(WorkoutTemplates.id)
-    val fourthWorkoutId = integer("fourth_workout_id").references(WorkoutTemplates.id)
-    val fifthWorkoutId = integer("fifth_workout_id").references(WorkoutTemplates.id)
-    val sixthWorkoutId = integer("sixth_workout_id").references(WorkoutTemplates.id)
-    val seventhWorkoutId = integer("seventh_workout_id").references(WorkoutTemplates.id)
+    val startDate = date("start_date").nullable()
+    val endDate = date("end_date").nullable()
+
+    override val primaryKey: PrimaryKey
+        get() = PrimaryKey(id)
+}
+
+object WorkoutTemplateToWorkoutPlan: Table("workout_template_to_workout_plan") {
+    val id = integer("id").autoIncrement("workout_template_to_workout_plan_id_seq")
+    val workoutTemplateId = integer("workout_template_id").references(WorkoutTemplates.id)
+    val workoutPlanId = integer("workout_plan_id").references(WorkoutPlans.id)
+    val dayOfWeek = integer("day_of_week")
 
     override val primaryKey: PrimaryKey
         get() = PrimaryKey(id)
@@ -100,13 +103,18 @@ object WorkoutPlans: Table("workout_plans") {
 
 object WorkoutTemplates : Table("workout_templates") {
     val id = integer("id").autoIncrement("workout_templates_id_seq")
-    val mainExerciseId = integer("main_exercise_id").references(ExerciseTemplates.id)
-    val secondaryExerciseId = integer("secondary_exercise_id").references(ExerciseTemplates.id)
-    val auxiliaryExerciseId = integer("auxiliary_exercise_id").references(ExerciseTemplates.id)
-    val secondAuxiliaryExerciseId = integer("auxiliary_exercise_id_2").references(ExerciseTemplates.id)
-    val thirdAuxiliaryExerciseId = integer("auxiliary_exercise_id_3").references(ExerciseTemplates.id)
+    val userId = integer("user_id").references(Users.id)
 
     override val primaryKey: PrimaryKey?
+        get() = PrimaryKey(id)
+}
+
+object ExerciseTemplateToWorkoutTemplate: Table("exercise_template_to_workout_template") {
+    val id = integer("id").autoIncrement("exercise_template_to_workout_template_id_seq")
+    val exerciseTemplateId = integer("exercise_template_id").references(ExerciseTemplates.id)
+    val workoutTemplateId = integer("workout_template_id").references(WorkoutTemplates.id)
+
+    override val primaryKey: PrimaryKey
         get() = PrimaryKey(id)
 }
 

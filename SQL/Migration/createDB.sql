@@ -9,18 +9,13 @@ create table users(
 	date_of_birth date);
 
 create table workout_plans(
-	id serial not null primary key,
-	user_id smallint not null references users(id),
-	start_date date,
-	end_date date,
-	name varchar(40) not null,
-	first_workout_id int references workout_templates(id),
-	second_workout_id int references workout_templates(id),
-	third_workout_id int references workout_templates(id),
-	fourth_workout_id int references workout_templates(id),
-	fifth_workout_id int references workout_templates(id),
-	sixth_workout_id int references workout_templates(id),
-	seventh_workout_id int references workout_templates(id));
+    id serial not null primary key,
+    user_id smallint not null references users(id),
+    start_date date,
+    end_date date,
+    name varchar(40) not null
+);
+
 
 create table workout_templates(
     id serial not null primary key,
@@ -49,14 +44,16 @@ create table exercise_types(
 	name varchar(20) not null);
 
 create table exercise_templates(
-	id smallserial not null primary key, 
-	exercise_type_id smallint not null references exercise_types(id), 
-	muscle_group_id smallint not null references muscle_groups(id), 
-	secondary_muscle_group_id smallint references muscle_groups(id), 
-	third_muscle_group_id smallint references muscle_groups(id), 
-	fourth_muscle_group_id smallint references muscle_groups(id),
-	fifth_muscle_group_id smallint references muscle_groups(id), 
-	name varchar(40) not null);
+    id smallserial not null primary key,
+    exercise_type_id smallint not null references exercise_types(id),
+    name varchar(40) not null
+);
+
+create table exercise_template_to_muscle_group(
+    id serial not null primary key,
+    exercise_template_id smallint not null references exercise_templates(id),
+    muscle_group_id smallint not null references muscle_groups(id)
+);
 
 create table exercises(
 	id bigserial not null primary key, 
@@ -102,6 +99,33 @@ insert into muscle_groups (name) values ('Front deltoid');
 insert into muscle_groups (name) values ('Side deltoid');
 insert into muscle_groups (name) values ('Rear deltoid');
 insert into muscle_groups (name) values ('Lower back');
+insert into muscle_groups (name) values ('Forearms');
+
+insert into exercise_templates (exercise_type_id, name) values (4, 'Pull ups');
+insert into exercise_templates (exercise_type_id, name) values (3, 'Bench press');
+insert into exercise_templates (exercise_type_id, name) values (5, 'Deadlifts');
+insert into exercise_templates (exercise_type_id, name) values (3, 'Overhead press');
+insert into exercise_templates (exercise_type_id, name) values (5, 'Squats');
+
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (1, 2);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (1, 13);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (1, 15);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (1, 9);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (2, 1);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (2, 10);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (2, 11);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (3, 5);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (3, 14);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (3, 6);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (3, 7);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (4, 11);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (4, 10);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (4, 13);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (4, 8);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (5, 4);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (5, 5);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (5, 6);
+insert into exercise_template_to_muscle_group (exercise_template_id, muscle_group_id) values (5, 7);
 
 insert into workout_plans (user_id, target_weekly_workout_days, start_date) values (1, 4, '2024-07-08');
 insert into workout_plans (user_id, target_weekly_workout_days, start_date) values (2, 3, '2024-07-08');

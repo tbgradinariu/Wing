@@ -1,21 +1,31 @@
 package com.tiberiu.wing.repository
 
-import com.tiberiu.wing.db.ExerciseSets
+import com.tiberiu.wing.db.ExerciseTemplateToWorkoutTemplate
 import com.tiberiu.wing.db.ExerciseTemplates
 import com.tiberiu.wing.db.ExerciseTypes
-import com.tiberiu.wing.db.Exercises
 import com.tiberiu.wing.db.MuscleGroups
 import com.tiberiu.wing.db.WorkoutPlans
+import com.tiberiu.wing.db.WorkoutTemplateToWorkoutPlan
+import com.tiberiu.wing.db.WorkoutTemplates
 import com.tiberiu.wing.db.Workouts
 import com.tiberiu.wing.db.dbQuery
+import com.tiberiu.wing.model.CreateWorkoutPlanRequest
+import com.tiberiu.wing.model.CreateWorkoutTemplateRequest
 import com.tiberiu.wing.model.ExerciseTemplate
 import com.tiberiu.wing.model.WorkoutPlan
-import com.tiberiu.wing.model.WorkoutPlanDetails
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toJavaLocalDate
+import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.alias
 import org.jetbrains.exposed.sql.count
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.insertReturning
 
 class WorkoutPlansDatabaseRepository: WorkoutPlanRepository {
     override suspend fun getExerciseTemplates(): List<ExerciseTemplate> {
@@ -78,19 +88,68 @@ class WorkoutPlansDatabaseRepository: WorkoutPlanRepository {
                 .where(WorkoutPlans.userId eq userId)
                 .groupBy(WorkoutPlans.id)
                 .map {
-                    var endDate: LocalDate? = null
-                    if (it.getOrNull(WorkoutPlans.endDate) != null) {
-                        endDate = LocalDate(it[WorkoutPlans.endDate].year, it[WorkoutPlans.endDate].month, it[WorkoutPlans.endDate].dayOfMonth)
+                    val startDate = it[WorkoutPlans.startDate]?.let { startDate ->
+                        LocalDate(startDate.year, startDate.month, startDate.dayOfMonth)
                     }
+                    val endDate = it[WorkoutPlans.endDate]?.let { endDate ->
+                        LocalDate(endDate.year, endDate.month, endDate.dayOfMonth) }
                     WorkoutPlan(
                         id = it[WorkoutPlans.id],
                         name = it[WorkoutPlans.name],
-                        targetWeeklyWorkoutDays = 0,
-                        startDate = LocalDate(it[WorkoutPlans.startDate].year, it[WorkoutPlans.startDate].month, it[WorkoutPlans.startDate].dayOfMonth),
+                        startDate = startDate,
                         endDate = endDate,
                         totalDoneWorkouts = it[totalWorkouts].toInt()
                     )
                 }
+        }
+    }
+
+    override suspend fun createWorkoutTemplate(createWorkoutTemplateRequest: CreateWorkoutTemplateRequest): Boolean {
+        return dbQuery {
+            try {
+                WorkoutTemplates.insertReturning(listOf(WorkoutTemplates.id)) {
+                    it[userId] = createWorkoutTemplateRequest.userId
+                }.map {
+                    createWorkoutTemplateRequest.exercises.forEach { exerciseId ->
+                        ExerciseTemplateToWorkoutTemplate.insert { exerciseTemplateTable ->
+                            exerciseTemplateTable[exerciseTemplateId] = exerciseId.toInt()
+                            exerciseTemplateTable[workoutTemplateId] = it[WorkoutTemplates.id]
+                        }
+                    }
+                }
+                return@dbQuery true
+            } catch(ex: Exception) {
+                println("Error creating workout template: ${ex.message}")
+                return@dbQuery false
+            }
+        }
+    }
+
+    override suspend fun createWorkoutPlan(workoutPlan: CreateWorkoutPlanRequest): Boolean {
+        return dbQuery {
+            try {
+                val currentMoment: Instant = Clock.System.now()
+                val today: LocalDate = currentMoment.toLocalDateTime(TimeZone.UTC).date
+                val workoutPlanStartDate = workoutPlan.startDate ?: today
+                WorkoutPlans.insertReturning(listOf(WorkoutPlans.id)) {
+                    it[userId] = workoutPlan.userId
+                    it[name] = workoutPlan.name
+                    it[startDate] = workoutPlanStartDate.toJavaLocalDate()
+                    it[endDate] = workoutPlan.endDate?.toJavaLocalDate()
+                }.map { createdWorkoutResultRow ->
+                    workoutPlan.workoutTemplates.forEach { workoutTemplate ->
+                        WorkoutTemplateToWorkoutPlan.insert {
+                            it[workoutTemplateId] = workoutTemplate.workoutTemplateId
+                            it[workoutPlanId] = createdWorkoutResultRow[WorkoutPlans.id]
+                            it[dayOfWeek] = workoutTemplate.dayOfWeek
+                        }
+                    }
+                }
+                return@dbQuery true
+            } catch (exception: Exception) {
+                println("Error creating workout plan: ${exception.message}")
+                return@dbQuery false
+            }
         }
     }
 }

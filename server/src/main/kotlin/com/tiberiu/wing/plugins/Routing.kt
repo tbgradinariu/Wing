@@ -2,7 +2,9 @@ package com.tiberiu.wing.plugins
 
 import com.tiberiu.wing.routing.authRoute
 import com.tiberiu.wing.routing.userRoute
+import com.tiberiu.wing.routing.workoutPlans
 import com.tiberiu.wing.routing.workoutRoute
+import com.tiberiu.wing.routing.workoutTemplates
 import com.tiberiu.wing.service.JwtService
 import com.tiberiu.wing.service.UserService
 import com.tiberiu.wing.service.WorkoutService
@@ -26,6 +28,14 @@ fun Application.configureRouting(
 
         route("api/workout") {
             workoutRoute(workoutService)
+        }
+
+        route("api/workoutTemplates") {
+            workoutTemplates(workoutService)
+        }
+
+        route("api/workoutPlans") {
+            workoutPlans(workoutService)
         }
     }
 }
